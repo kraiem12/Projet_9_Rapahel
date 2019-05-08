@@ -1,0 +1,7 @@
+---
+- name: Install web 
+  import_playbook: installapache.yml
+- name: Install db
+  import_playbook: installmariadb.yml
+- name: Install app
+  import_playbook: tomcat.yml
