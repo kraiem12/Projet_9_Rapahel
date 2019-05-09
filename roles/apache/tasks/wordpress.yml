@@ -1,0 +1,17 @@
+---
+
+# Configure Wordpress 
+
+- name: Download wordpress 
+  get_url: url=http://wordpress.org/latest.tar.gz dest=/tmp/latest.tar.gz
+
+- name: Extract Wordpress
+  command: /bin/tar -xvf /tmp/latest.tar.gz -C /tmp/  
+
+
+# Copy to www dir 
+#- name: Copy to webdir 
+ 
+
+
+

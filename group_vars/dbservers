@@ -1,0 +1,14 @@
+---
+# variables file used by dbservers group 
+
+mysqlservice: mysqld
+mysql_port: 3306
+mysql_data_dir: /var/lib/mysql/
+mysql_root_pass: root 
+
+dbuser: admin
+dbpassword: admin 
+
+dbname: test_db
+
+

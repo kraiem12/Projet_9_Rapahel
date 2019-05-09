@@ -1,0 +1,21 @@
+# variables for web server 
+
+
+# apache-httpd variables 
+
+apache_demon: httpd 
+
+http_port: 80
+https_port: 443
+
+
+# apache-tomcat variables 
+
+tomcat_port: 8088
+tomcat_https_port: 8443
+tomcat_user: admin
+tomcat_password: tom@cloud 
+catalina_home:
+catalina_opts: 
+
+ 

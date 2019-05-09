@@ -1,0 +1,16 @@
+---
+# This playbook intall mysql and  deploys the application stack in this site.  
+
+
+- name: Deploy MySQL and configure the databases
+  hosts: dbservers
+  remote_user: root
+  sudo: yes
+  roles:
+  - mysql
+  tags:
+  - mysql
+
+
+
+

@@ -22,26 +22,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     web.vm.hostname = "devops-web.dev"
     # static ip address
     web.vm.network :private_network, ip: "192.168.60.4"
-    web.vm.provision "ansible" do |ansible|
-      ansible.playbook = "installapache.yml"
-    end
   end
   # Application server
   config.vm.define "app-server" do |app|
     app.vm.hostname = "devops-app.dev"
     # static ip address
     app.vm.network :private_network, ip: "192.168.60.5"
-    app.vm.provision "ansible" do |ansible|
-      ansible.playbook = "tomcat.yml"
-    end
   end
   # Database server
   config.vm.define "database" do |db|
     db.vm.hostname = "devops-db.dev"
     # static ip address
     db.vm.network :private_network, ip: "192.168.60.6"
-    db.vm.provision "ansible" do |ansible|
-      ansible.playbook = "installmariadb.yml"
-    end
   end
 end

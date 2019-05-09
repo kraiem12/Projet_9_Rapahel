@@ -1,0 +1,9 @@
+---
+
+# Main file
+
+- include: setup_java.yml tags=java
+- include: setup_tomcat.yml
+- include: config_tomcat.yml
+
+
