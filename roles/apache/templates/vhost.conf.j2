@@ -3,13 +3,13 @@
 #  
 
 <VirtualHost *:80>
-  ServerName api.localhost 
+  ServerName localhost 
 
   ProxyRequests Off
   ProxyPreserveHost On
 
-  ProxyPass /api http://localhost:{{ tomcat_port }}/test/
-  ProxyPassReverse /api http://localhost:{{ tomcat_port }}/test/
+  ProxyPass "/" http://localhost:8080/
+  ProxyPassReverse "/" http://localhost:8080/
  
 
   <Proxy *>

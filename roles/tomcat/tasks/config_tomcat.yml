@@ -19,6 +19,6 @@
 - include: update_iptables.yml 
 
 - name: wait for tomcat to start
-  wait_for: port={{ tomcat_port }}
+  wait_for: port=8080
 
 

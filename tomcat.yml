@@ -2,7 +2,7 @@
 # This playbook install apache tomcat.  
 
 - name: Install tomcat and configure web root  
-  hosts: appservers 
+  hosts: webservers 
   sudo: yes
   roles:
   - { role: tomcat, tags: tomcat }
