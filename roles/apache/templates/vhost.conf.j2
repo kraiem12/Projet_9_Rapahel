@@ -3,18 +3,30 @@
 #  
 
 <VirtualHost *:80>
-  ServerName localhost 
-
+  ServerName tomcat
+  ServerAlias *.tomcat tomcat
   ProxyRequests Off
   ProxyPreserveHost On
-
-  ProxyPass "/" http://localhost:80/
-  ProxyPassReverse "/" http://localhost:80/
+  ProxyPass "/" http://192.168.60.5:8080/
+  ProxyPassReverse "/" http://192.168.60.5:8080/
  
-
   <Proxy *>
     Require all granted
   </Proxy> 
 </VirtualHost>
+
+<VirtualHost *:80>
+  ServerName app
+  ServerAlias *.app app
+  ProxyRequests Off
+  ProxyPreserveHost On
+  ProxyPass "/" http://192.168.60.5:8080/webapps
+  ProxyPassReverse "/" http://192.168.60.5:8080/webapps
+ 
+  <Proxy *>
+    Require all granted
+  </Proxy> 
+</VirtualHost>
+
 
 
