@@ -1,11 +1,12 @@
 ---
 
 - name: apache configure   
-  yum: name="{{ item }}" state=present
-  with_items:
-  - httpd
-  - httpd-devel
-  - mod_ssl
+  yum:
+    name:
+    - httpd
+    - httpd-devel
+    - mod_ssl
+    state: present
   tags:
   - install
 
@@ -13,18 +14,21 @@
   service: name=httpd state=started enabled=yes
 
 - name: Set SELinux httpd net connection
-  command: sudo /usr/sbin/setsebool -P  httpd_can_network_connect 1
+  #become: true
+  command: /usr/sbin/setsebool -P  httpd_can_network_connect 1
 
-- name: Set SELinux write access 
-  command: sudo /usr/sbin/setsebool -P  httpd_unified 1
+- name: Set SELinux write access
+  #become: true 
+  command: /usr/sbin/setsebool -P  httpd_unified 1
 
 #  Configure DNS 
 - name: Configure DNS 
   template: src=dns.conf.j2 dest=/etc/hosts
   tags:
   - vhost
-- name : Source Hosts
-  shell: . /etc/hosts
+
+#- name : Source Hosts
+#  shell: source /etc/hosts
 
 #  Configure virtual host 
 - name: Create virtual host 

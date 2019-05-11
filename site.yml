@@ -1,9 +1,9 @@
 ---
 # Main configuration file 
 
-- include: apache.yml
-- include: mysql.yml
-- include: tomcat.yml
+- import_playbook: apache.yml
+#- import_playbook: mysql.yml
+#- import_playbook: tomcat.yml
 
 
 
