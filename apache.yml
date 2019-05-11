@@ -3,7 +3,7 @@
 
 - name: Install apache, php  and configure web root  
   hosts: webservers 
-  become: true
+  become: True
   roles:
   - apache 
   tags:
