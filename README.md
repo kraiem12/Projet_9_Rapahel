@@ -7,6 +7,8 @@ We have build this using Virtual Machines and Ansible, but it should be easily a
 
 We have simply used the mod_proxy modules of Apache and built <Virtual Host> VHs in a vhost.conf file (see apache/templates). To make the aliases understandable, we have also changed the local DNS of the machine in dns.conf (see apache/templates) - stating that the machines were brand new, we just replace the existing file but you might want to add the aliases through sed instead if you run the program on used machines.
 
+To set up:
+Manager Ids are located in the /roles/tomcat/templates/tomcat-users.xml file
 
 To run : 
 1. Install Ansible
