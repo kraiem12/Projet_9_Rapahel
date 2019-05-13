@@ -30,7 +30,7 @@
   <!.. ..> that surrounds them.
 -->
   <role rolename="manager-gui"/>
-  <user username="tomcatdmin" password="LucTomcatAdmin" roles="manager-gui" />
+  <user username="tomcatdmin" password="TomcatAdmin" roles="manager-gui" />
 
 <!--
   <role rolename="tomcat"/>

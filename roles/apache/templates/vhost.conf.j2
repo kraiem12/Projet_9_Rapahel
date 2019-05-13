@@ -7,8 +7,8 @@
   ServerAlias *.tomcat tomcat
   ProxyRequests Off
   ProxyPreserveHost On
-  ProxyPass "/" http://192.168.60.5:8080/
-  ProxyPassReverse "/" http://192.168.60.5:8080/
+  ProxyPass "/" http://192.168.60.5:8080/manager/html
+  ProxyPassReverse "/" http://192.168.60.5:8080/html
  
   <Proxy *>
     Require all granted
