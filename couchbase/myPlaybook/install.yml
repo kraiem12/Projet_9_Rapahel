@@ -1,0 +1,17 @@
+---
+- name: "playbook couchebase"
+  hosts: all
+  become: yes
+  tasks:
+    - name: telecharger le repo
+      get_url: 
+        url: http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-5-x86_64.rpm
+        dest: /tmp/couchbase-release-1.0-5-x86_64.rpm
+    - name: installer le package   
+      yum: 
+        name: /tmp/couchbase-release-1.0-5-x86_64.rpm
+        state: present  
+    - name: install couchbase
+      yum:
+       name: couchbase-server
+       state: present  

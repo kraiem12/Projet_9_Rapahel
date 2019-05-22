@@ -1,0 +1,5 @@
+---
+- name: Install couchbase
+  import_playbook: install.yml
+- name: init cluster add noeuds create bucket
+  import_playbook: config.yml  

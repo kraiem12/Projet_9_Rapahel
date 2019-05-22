@@ -1,0 +1,15 @@
+---
+- name: "playbook config"
+  hosts: couchbase-master
+  become: yes
+  tasks:
+   - name : initialisation du cluster
+     shell : /opt/couchbase/bin/couchbase-cli cluster-init -c 127.0.0.1 --cluster-username rim --cluster-password 123456 --services data --cluster-ramsize 256
+   - name : ajout du noeud 1
+     shell : /opt/couchbase/bin/couchbase-cli server-add -c 192.168.60.4:8091 --username rim  --password 123456 --server-add 192.168.60.5:8091 --server-add-username rim --server-add-password 123456 --services data,index,query
+   - name : ajout du noeud 2
+     shell : /opt/couchbase/bin/couchbase-cli server-add -c 192.168.60.4:8091 --username  rim  --password 123456 --server-add 192.168.60.6:8091 --server-add-username rim --server-add-password 123456 --services data,index,query
+   - name : rebalancer le cluster
+     shell : /opt/couchbase/bin/couchbase-cli rebalance -c 192.168.60.6:8091 --username rim  --password 123456
+   - name : creation du bucket
+     shell : /opt/couchbase/bin/couchbase-cli bucket-create -c 192.168.60.4:8091 -u rim -p 123456 --bucket=rim --bucket-type=couchbase --bucket-ramsize=100 --bucket-replica=2
