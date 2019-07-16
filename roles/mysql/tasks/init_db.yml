@@ -1,0 +1,20 @@
+---
+# Setup default user and a database
+
+- name: Create Application Database
+  mysql_db: name={{ dbname }} state=present
+
+- name: Create Application DB User
+  mysql_user: name={{ dbuser }} password={{ dbpassword }} priv=*.*:ALL host='localhost' state=present
+
+# Remove blank user 
+- name: Remove anonymous MySQL users.
+  mysql_user:
+     name: ""
+     host: "{{ item }}"
+     state: absent
+  with_items:
+    - localhost
+    - 127.0.0.1
+
+ 

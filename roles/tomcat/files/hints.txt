@@ -1,0 +1,11 @@
+
+
+# script source
+
+https://github.com/ansible/ansible-examples/blob/master/tomcat-standalone/roles/tomcat/files/tomcat-initscript.sh
+
+# project template
+
+https://github.com/ansible/ansible-examples/blob/master/tomcat-standalone/
+
+

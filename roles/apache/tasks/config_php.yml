@@ -1,0 +1,28 @@
+---
+
+# Configure php
+
+- include_vars:  php_vars.yml 
+
+- name: Define php_packages
+  set_fact: 
+    php_packages: "{{ __php_packages | list }}"
+    cacheable: true
+  when: php_packages is not defined
+
+- name: PHP Install packages 
+  yum: name="{{ php_packages }}" update_cache=yes state=present 
+  notify: restart httpd 
+
+- name: Check installed version of php
+  shell: '{{ php_executable }} -r "echo PHP_VERSION;"'
+  register: php_version
+  changed_when: false
+  check_mode: no
+
+ 
+
+
+
+
+

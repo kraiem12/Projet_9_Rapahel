@@ -1,0 +1,6 @@
+---
+#  variables listed for all host group
+
+httpd_port: 80
+
+

@@ -1,0 +1,42 @@
+---
+
+- name: apache configure   
+  yum:
+    name:
+    - httpd
+    - httpd-devel
+    - mod_ssl
+    state: present
+  tags:
+  - install
+
+- name: Ensure httpd is running
+  service: name=httpd state=started enabled=yes
+
+- name: Set SELinux httpd net connection
+  #become: true
+  command: /usr/sbin/setsebool -P  httpd_can_network_connect 1
+
+- name: Set SELinux write access
+  #become: true 
+  command: /usr/sbin/setsebool -P  httpd_unified 1
+
+#  Configure DNS 
+- name: Configure DNS 
+  template: src=dns.conf.j2 dest=/etc/hosts
+  tags:
+  - vhost
+
+#- name : Source Hosts
+#  shell: source /etc/hosts
+
+#  Configure virtual host 
+- name: Create virtual host 
+  template: src=vhost.conf.j2 dest=/etc/httpd/conf.d/vhost.conf
+  notify:
+  - restart httpd 
+  tags:
+  - vhost
+
+- include: config_php.yml tags=php
+
